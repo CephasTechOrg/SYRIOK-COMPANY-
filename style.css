@@ -421,8 +421,10 @@ header.scrolled {
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),
         url('https://cdn.pixabay.com/photo/2024/01/06/07/23/commercial-roofing-8490821_1280.jpg');
     background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    /* mobile-first: don't use fixed on mobile */
     display: flex;
     align-items: center;
     position: relative;
@@ -1505,6 +1507,12 @@ footer:before {
 
     section {
         padding: 5rem 0;
+    }
+
+    .hero {
+        background-attachment: fixed;
+        /* enable fixed on desktop only */
+        background-position: center center;
     }
 
     .hero h1 {

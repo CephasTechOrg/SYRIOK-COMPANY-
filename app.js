@@ -268,3 +268,21 @@ function toggleFAQ(button) {
     answer.classList.toggle('active');
     icon.textContent = button.classList.contains('active') ? '−' : '+';
 }
+
+// Ensure hero background image is applied on devices that sometimes ignore CSS shorthand
+window.addEventListener('load', () => {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        const imgUrl = 'https://cdn.pixabay.com/photo/2024/01/06/07/23/commercial-roofing-8490821_1280.jpg';
+        // If computed background-image is none or empty on mobile, set inline style as fallback
+        const comp = getComputedStyle(hero).backgroundImage || '';
+        if (!comp || comp === 'none' || comp.indexOf(imgUrl) === -1) {
+            hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.7)), url('${imgUrl}')`;
+            hero.style.backgroundRepeat = 'no-repeat';
+            hero.style.backgroundSize = 'cover';
+            hero.style.backgroundPosition = 'center center';
+            // keep attachment scroll on small screens; desktop media query will override
+            hero.style.backgroundAttachment = window.innerWidth >= 1025 ? 'fixed' : 'scroll';
+        }
+    }
+});
