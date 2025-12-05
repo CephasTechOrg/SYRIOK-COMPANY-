@@ -285,6 +285,41 @@ header.scrolled {
     color: var(--primary);
 }
 
+/* logo size - adjusted to sensible defaults */
+.logo .nav-logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-right: 12px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* small phones */
+@media (max-width: 480px) {
+    .logo .nav-logo {
+        width: 48px;
+        height: 48px;
+        margin-right: 8px;
+    }
+}
+
+/* large screens */
+@media (min-width: 1025px) {
+    .logo .nav-logo {
+        width: 96px;
+        height: 96px;
+        margin-right: 14px;
+    }
+
+    /* reset header padding to original comfortable size */
+    header {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+}
+
 .mobile-menu-btn {
     display: flex;
     background: none;
